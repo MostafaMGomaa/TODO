@@ -39,7 +39,7 @@ body{
   background-color: rgb(231, 231, 230);
   border: rgba(0, 0, 0, 0.5) 2px;
   border-style: none none solid;
-
+  text-align: center;  
 }
 
 .txt:focus, .txt:hover{
@@ -48,6 +48,10 @@ body{
   border-style: none none solid;
   outline: none;
   border-radius: 5px;
+}
+
+.txt::placeholder{
+  text-align: center;
 }
 
 .btn{
@@ -73,12 +77,12 @@ body{
 }
 p{
   padding: 10px;
-  margin: 5px;
+  margin: 2px;
   background-color: rgba(126, 124, 124, 0.2);
   color: black;
   font-size: 18px;
   font-weight: lighter;
-  border: rgb(7, 121, 32) 2px;
+  border: rgb(7, 121, 32) 1px;
   border-style: none none solid;
 }
 

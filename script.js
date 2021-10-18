@@ -6,21 +6,21 @@ const welcomWord = document.querySelector('.welcom');
 const invaildMessage = document.querySelector('.invaild');
 const newTask = document.querySelector('.newTask');
 const clearTasks = document.querySelector('.clear');
-if (!localStorage.getItem('tasks')) {
-  localStorage.setItem('tasks', JSON.stringify('[]'));
-}
-let tasks = localStorage.getItem("tasks");
+let tasks;
 function add(txt) {
-  if (txt.value.length > 1) {
+  if (txt.value.length > 1 && txt.value !== ' ') {
     console.log(tasks);
-    tasks += ' ' + txt.value
+    tasks = txt.value;
     console.log(tasks);
     // hide error message, welocm word
     invaildMessage.classList.add('hidden');
     welcomWord.classList.add('hidden');
     // add new p
     const para = document.createElement("p");
-    const node = document.createTextNode(txt.value);
+    // captaillize the task.
+    const captallizeTask = tasks[0].toUpperCase() + tasks.toLowerCase().slice(1);
+    const node = document.createTextNode(captallizeTask);
+
     para.appendChild(node);
     // area in which paragraph appers
     newTask.appendChild(para);
