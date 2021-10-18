@@ -1,0 +1,125 @@
+* {
+  padding: 0;
+  margin:0;
+  box-sizing: inherit;
+}
+
+html{
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+  color: #444;
+  background-color: rgb(231, 231, 230);
+  height: 100vh;
+  padding: 2rem;
+}
+
+.container{
+  width: 550px;
+  height: 180px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.heading{
+  font-size: 30px;
+  font-weight: 1rem;
+  padding: 10px;
+  margin: 10px;
+  color: rgb(41, 160, 25);
+}
+
+
+.txt{
+  padding: 5px;
+  margin: 5 10 5 20px;
+  background-color: rgb(231, 231, 230);
+  border: rgba(0, 0, 0, 0.5) 2px;
+  border-style: none none solid;
+
+}
+
+.txt:focus, .txt:hover{
+  height: 30px;
+  border: rgb(9, 131, 35) 2px;
+  border-style: none none solid;
+  outline: none;
+  border-radius: 5px;
+}
+
+.btn{
+  position: flex;
+  justify-content: center;
+  width: 90px;
+  height: 35px;
+  padding: 10px;
+  margin: 10px;
+  font-weight: bolder;
+  font-size: 14px;
+  word-spacing: 2px;
+  border: rgba(0, 0, 0, 0.5) 2px;
+  border-style: none none solid;
+  border-radius: 5px;
+
+}
+
+.btn:hover{
+  cursor: pointer;
+  border: rgb(0, 255, 55) 2px;
+  border-style: none none solid;
+}
+p{
+  padding: 10px;
+  margin: 5px;
+  background-color: rgba(126, 124, 124, 0.2);
+  color: black;
+  font-size: 18px;
+  font-weight: lighter;
+  border: rgb(7, 121, 32) 2px;
+  border-style: none none solid;
+}
+
+p:hover{
+  color: rgb(7, 105, 51);
+}
+
+
+.tasks{
+  width: 500px;
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0,0.5);
+}
+
+.welcom{
+  padding: 10px;
+  margin: 5px;
+  font-family: 'Lucida Sans',cursive;
+  font-size: 18px;
+  word-spacing: 2px;
+  text-align: center;
+  background-color: rgb(255, 255, 255); 
+  color: rgba(0, 0, 0);
+  border-style: none;
+}
+
+.invaild{
+padding:2px;
+margin: 2px;
+text-align: center;
+text-decoration: underline;
+color: red;
+background-color: rgb(255, 255, 255);
+border-color: rgb(255, 255, 255);
+
+}
+.invaild:hover{
+  color: red;
+}
+.hidden{
+  display: none;
+}
