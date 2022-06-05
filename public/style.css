@@ -42,7 +42,7 @@ body {
   color: black;
   background-color: #04aa6d;
 }
-.btn-group {
+.btn-forms {
   position: absolute;
   right: 5%;
   top: 3.5%;
@@ -146,7 +146,9 @@ body {
   font-weight: lighter;
   border: rgb(7, 121, 32) 1px;
   border-style: none none solid;
-  text-align: center;
+  text-align: left;
+  right: 0;
+  left: 0;
 }
 .newTask:hover {
   color: rgb(7, 105, 51);
@@ -191,15 +193,32 @@ body {
 .invaild:hover {
   color: red;
 }
-.hidden {
-  display: none;
+.btn-delete,
+.btn-edit,
+.btn-check-mark {
+  font-size: 20px;
+  /* padding: 0 2px; */
+  margin: 10px;
+  color: #666;
+  text-align: right;
+}
+.btn-delete:hover,
+.btn-edit:hover,
+.btn-check-mark:hover {
+  background-color: rgb(117, 117, 117);
+  border-radius: 50%;
 }
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-
 li {
   display: inline;
+}
+.finshed {
+  text-decoration: line-through;
+}
+.hidden {
+  display: none;
 }

@@ -6,6 +6,8 @@ const welcomWord = document.querySelector(".welcom");
 const invaildMessage = document.querySelector(".invaild");
 const newTasksContainer = document.querySelector(".newTasks-container");
 const clearTasks = document.querySelector(".btn-clear");
+const btnClose = document.querySelectorAll(".btn-close");
+const btnCheckMark = document.querySelectorAll(".btn-check-mark");
 
 function add(txt) {
   if (txt.value.length > 1 && txt.value !== " ") {
@@ -13,19 +15,16 @@ function add(txt) {
     // hide error message, welocm word
     invaildMessage.classList.add("hidden");
     welcomWord.classList.add("hidden");
-    // add new p
-    const para = document.createElement("p");
     // captaillize the task.
     const captallizeTask =
       newTask[0].toUpperCase() + newTask.toLowerCase().slice(1);
 
-    const html = `<p class="newTask">${captallizeTask}</p>`;
+    const html = `<p class="newTask">${captallizeTask}
+    <button class="btn btn-delete">✖</button>
+    <button class="btn btn-edit">✏️</button>
+    <button class="btn btn-check-mark">✔️</button>
+    </p>`;
     newTasksContainer.insertAdjacentHTML("afterbegin", html);
-
-    // const node = document.createTextNode(captallizeTask);
-    // para.appendChild(node);
-    // // area in which paragraph appers
-    // newTask.appendChild(para);
 
     //clear txt area after add task
     txt.value = "";
