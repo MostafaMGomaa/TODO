@@ -1,13 +1,14 @@
-const router = require("express").Router();
+const router = require('express').Router();
+const tasksController = require('../controllers/tasksContoller');
 
-router.use("/", (req, res, next) => {
-  res.status(200).json({
-    status: "success",
-    data: {
-      message: "Hello Task",
-    },
-  });
-  next();
-});
+router
+  .route('/')
+  .get(tasksController.getTasks)
+  .post(tasksController.createTask);
 
+router
+  .route('/:id')
+  .get(tasksController.getTask)
+  .patch(tasksController.updateTask)
+  .delete(tasksController.deleteTask);
 module.exports = router;
