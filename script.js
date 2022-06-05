@@ -1,56 +1,57 @@
-'use strict'
-const heaing = document.querySelector('.heading');
-const txt = document.querySelector('.txt');
-const addTask = document.querySelector('.add');
-const welcomWord = document.querySelector('.welcom');
-const invaildMessage = document.querySelector('.invaild');
-const newTask = document.querySelector('.newTask');
-const clearTasks = document.querySelector('.clear');
-let tasks;
+"use strict";
+const heaing = document.querySelector(".heading");
+const txt = document.querySelector(".txt");
+const addTask = document.querySelector(".btn-add");
+const welcomWord = document.querySelector(".welcom");
+const invaildMessage = document.querySelector(".invaild");
+const newTasksContainer = document.querySelector(".newTasks-container");
+const clearTasks = document.querySelector(".btn-clear");
+
 function add(txt) {
-  if (txt.value.length > 1 && txt.value !== ' ') {
-    console.log(tasks);
-    tasks = txt.value;
-    console.log(tasks);
+  if (txt.value.length > 1 && txt.value !== " ") {
+    let newTask = txt.value;
     // hide error message, welocm word
-    invaildMessage.classList.add('hidden');
-    welcomWord.classList.add('hidden');
+    invaildMessage.classList.add("hidden");
+    welcomWord.classList.add("hidden");
     // add new p
     const para = document.createElement("p");
     // captaillize the task.
-    const captallizeTask = tasks[0].toUpperCase() + tasks.toLowerCase().slice(1);
-    const node = document.createTextNode(captallizeTask);
+    const captallizeTask =
+      newTask[0].toUpperCase() + newTask.toLowerCase().slice(1);
 
-    para.appendChild(node);
-    // area in which paragraph appers
-    newTask.appendChild(para);
+    const html = `<p class="newTask">${captallizeTask}</p>`;
+    newTasksContainer.insertAdjacentHTML("afterbegin", html);
+
+    // const node = document.createTextNode(captallizeTask);
+    // para.appendChild(node);
+    // // area in which paragraph appers
+    // newTask.appendChild(para);
+
     //clear txt area after add task
-    txt.value = '';
+    txt.value = "";
     // apper clear button
-    clearTasks.classList.remove('hidden');
-  }
-  else {
+    clearTasks.classList.remove("hidden");
+  } else {
     // show error message.
-    invaildMessage.classList.remove('hidden');
+    invaildMessage.classList.remove("hidden");
   }
 }
 
 // Add task by button
-addTask.addEventListener('click', function () {
+addTask.addEventListener("click", function () {
   add(txt);
-})
+});
 
 // Add task by pressing enter
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Enter') add(txt);
-})
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") add(txt);
+});
 
-clearTasks.addEventListener('click', function () {
+clearTasks.addEventListener("click", function () {
   // clear the div
-  newTask.innerHTML = '';
+  newTasksContainer.innerHTML = "";
   // Add welcom word, hide clear button and hide error meassage
-  welcomWord.classList.remove('hidden');
-  clearTasks.classList.add('hidden');
-  invaildMessage.classList.add('hidden');
-
-})
+  welcomWord.classList.remove("hidden");
+  clearTasks.classList.add("hidden");
+  invaildMessage.classList.add("hidden");
+});

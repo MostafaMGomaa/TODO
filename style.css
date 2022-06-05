@@ -1,60 +1,122 @@
 * {
   padding: 0;
-  margin:0;
+  margin: 0;
   box-sizing: inherit;
 }
-
-html{
+html {
   font-size: 62.5%;
   box-sizing: border-box;
 }
-
-body{
+body {
   font-family: sans-serif;
   color: #444;
   background-color: rgb(231, 231, 230);
   height: 100vh;
   padding: 2rem;
 }
-
-.container{
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #ffffff;
+  background-color: #f3f3f3;
+}
+.nav-el {
+  float: left;
+  border-right: 1px solid #bbb;
+}
+.nav-el:last-child {
+  border-right: none;
+}
+.link {
+  display: block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 20px;
+}
+.link:hover {
+  text-decoration: none;
+  color: black;
+  background-color: #04aa6d;
+}
+.btn-group {
+  position: absolute;
+  right: 5%;
+  top: 3.5%;
+  font-size: larger;
+}
+.btn-signup,
+.btn-login {
+  font-size: 18px;
+}
+.user {
+  position: absolute;
+  right: 0%;
+  top: 2%;
+  width: 7cm;
+  height: 1.5cm;
+}
+.user-icon {
+  width: 100px;
+}
+.fa-user {
+  font-size: 10px;
+  width: 60px;
+  height: 60px;
+  margin: auto;
+  border-radius: 50%;
+  border: 2px solid #808080;
+}
+.username {
+  position: absolute;
+  right: 30%;
+  top: 35%;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+}
+.container {
+  position: absolute;
   width: 550px;
   height: 180px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  left: 30%;
+  top: 100px;
 }
-
-.heading{
+.control {
+  text-align: center;
+}
+.heading {
   font-size: 30px;
   font-weight: 1rem;
   padding: 10px;
   margin: 10px;
   color: rgb(41, 160, 25);
 }
-
-
-.txt{
+.txt {
   padding: 5px;
   margin: 5 10 5 20px;
   background-color: rgb(231, 231, 230);
   border: rgba(0, 0, 0, 0.5) 2px;
   border-style: none none solid;
-  text-align: center;  
+  text-align: center;
 }
-
-.txt:focus, .txt:hover{
+.txt:focus,
+.txt:hover {
   height: 30px;
   border: rgb(9, 131, 35) 2px;
   border-style: none none solid;
   outline: none;
   border-radius: 5px;
 }
-
-.txt::placeholder{
+.txt::placeholder {
   text-align: center;
 }
-
-.btn{
+.btn-add,
+.btn-clear {
   position: flex;
   justify-content: center;
   width: 90px;
@@ -67,15 +129,15 @@ body{
   border: rgba(0, 0, 0, 0.5) 2px;
   border-style: none none solid;
   border-radius: 5px;
-
 }
-
-.btn:hover{
+.btn-add:hover,
+.btn-clear:hover {
   cursor: pointer;
   border: rgb(0, 255, 55) 2px;
   border-style: none none solid;
+  box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.5);
 }
-p{
+.newTask {
   padding: 10px;
   margin: 2px;
   background-color: rgba(126, 124, 124, 0.2);
@@ -84,46 +146,60 @@ p{
   font-weight: lighter;
   border: rgb(7, 121, 32) 1px;
   border-style: none none solid;
+  text-align: center;
 }
-
-p:hover{
+.newTask:hover {
   color: rgb(7, 105, 51);
 }
-
-
-.tasks{
+.copyright {
+  border: none;
+  background: none;
+  color: #444;
+  font-size: small;
+  text-align: right;
+  margin: 20px;
+  padding: 10p;
+}
+.tasks {
+  position: relative;
+  top: 30%;
   width: 500px;
   padding: 20px;
-  margin: 20px;
   background-color: white;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0,0.5);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
-
-.welcom{
+.welcom {
   padding: 10px;
   margin: 5px;
-  font-family: 'Lucida Sans',cursive;
+  font-family: "Lucida Sans", cursive;
   font-size: 18px;
   word-spacing: 2px;
   text-align: center;
-  background-color: rgb(255, 255, 255); 
+  background-color: rgb(255, 255, 255);
   color: rgba(0, 0, 0);
   border-style: none;
 }
-
-.invaild{
-padding:2px;
-margin: 2px;
-text-align: center;
-text-decoration: underline;
-color: red;
-background-color: rgb(255, 255, 255);
-border-color: rgb(255, 255, 255);
-
+.invaild {
+  padding: 2px;
+  margin: 2px;
+  text-align: center;
+  text-decoration: underline;
+  color: red;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
 }
-.invaild:hover{
+.invaild:hover {
   color: red;
 }
-.hidden{
+.hidden {
   display: none;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
 }
