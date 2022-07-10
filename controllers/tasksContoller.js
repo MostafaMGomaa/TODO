@@ -3,9 +3,7 @@ const catchAsync = require('../utils/catchAsync');
 
 const getTasks = catchAsync(async (req, res, next) => {
   const tasks = await Tasks.find();
-  res.status(201).json({
-    tasks,
-  });
+  res.status(201).json({ tasks });
 });
 
 const getTask = catchAsync(async (req, res, next) => {
@@ -15,13 +13,7 @@ const getTask = catchAsync(async (req, res, next) => {
 
 const createTask = catchAsync(async (req, res, next) => {
   const task = await Tasks.create(req.body);
-
-  res.status(201).json({
-    status: 'success',
-    data: {
-      data: task,
-    },
-  });
+  res.status(201).json({ task });
 });
 
 const updateTask = catchAsync(async (req, res, next) => {

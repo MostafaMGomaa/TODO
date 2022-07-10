@@ -1,7 +1,7 @@
 'use strict';
 const heaing = document.querySelector('.heading');
 const txt = document.querySelector('.txt');
-const addTask = document.querySelector('.btn-add');
+const btnAddTask = document.querySelector('.btn-add');
 const welcomWord = document.querySelector('.welcom');
 const invaildMessage = document.querySelector('.invaild');
 const newTasksContainer = document.querySelector('.newTasks-container');
@@ -12,6 +12,15 @@ const btnCheckMark = document.querySelectorAll('.btn-check-mark');
 const hideMsgs = () => {
   invaildMessage.classList.add('hidden');
   welcomWord.classList.add('hidden');
+};
+
+const addTask = async () => {
+  const name = txt.value;
+  try {
+    await axios.post('http://127.0.0.1:3000/api/v1/tasks', { name });
+    showTasks();
+    txt.value = '';
+  } catch (error) {}
 };
 
 async function add(txt) {
@@ -47,35 +56,34 @@ const showTasks = async () => {
       data: { tasks },
     } = await axios.get('http://localhost:3000/api/v1/tasks');
 
-    if (tasks) {
-      // hide error message, welcom word
-      hideMsgs();
-
-      const allTasks = tasks
-        .map((task) => {
-          const { completed, _id: taskID, name } = task;
-          return `<p class="newTask">${name}
-          <button class="btn btn-delete">✖</button>
+    // if (tasks.length > 0) {
+    // hide error message, welcom word
+    hideMsgs();
+    const allTasks = tasks
+      .map((task) => {
+        const { completed, _id: taskID, name } = task;
+        return `<p class="newTask">${name}
+          <button class="btn btn-delete data-id="${taskID}"" >✖</button>
       <button class="btn btn-edit">✏️</button>
       <button class="btn btn-check-mark">✔️</button>
       </p>`;
-        })
-        .join('');
-      newTasksContainer.innerHTML = allTasks;
-    }
+      })
+      .join('');
+    newTasksContainer.innerHTML = allTasks;
+    // }
   } catch (error) {}
 };
 
 showTasks();
 
 // Add task by button
-addTask.addEventListener('click', function () {
-  add(txt);
+btnAddTask.addEventListener('click', function () {
+  addTask();
 });
 
 // Add task by pressing enter
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Enter') add(txt);
+  if (e.key === 'Enter') addTask();
 });
 
 clearTasks.addEventListener('click', function () {
