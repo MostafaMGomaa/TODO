@@ -75,7 +75,7 @@ body {
   right: 30%;
   top: 35%;
   font-size: 20px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
 }
 .container {
   position: absolute;
@@ -86,7 +86,7 @@ body {
   left: 30%;
   top: 100px;
 }
-.control {
+.main {
   text-align: center;
 }
 .heading {
@@ -173,7 +173,7 @@ body {
 .welcom {
   padding: 10px;
   margin: 5px;
-  font-family: "Lucida Sans", cursive;
+  font-family: 'Lucida Sans', cursive;
   font-size: 18px;
   word-spacing: 2px;
   text-align: center;
@@ -196,11 +196,12 @@ body {
 .btn-delete,
 .btn-edit,
 .btn-check-mark {
-  font-size: 20px;
+  font-size: 15px;
   /* padding: 0 2px; */
-  margin: 10px;
+  margin: 5px;
   color: #666;
   text-align: right;
+  float: right;
 }
 .btn-delete:hover,
 .btn-edit:hover,

@@ -1,20 +1,24 @@
-"use strict";
-const heaing = document.querySelector(".heading");
-const txt = document.querySelector(".txt");
-const addTask = document.querySelector(".btn-add");
-const welcomWord = document.querySelector(".welcom");
-const invaildMessage = document.querySelector(".invaild");
-const newTasksContainer = document.querySelector(".newTasks-container");
-const clearTasks = document.querySelector(".btn-clear");
-const btnClose = document.querySelectorAll(".btn-close");
-const btnCheckMark = document.querySelectorAll(".btn-check-mark");
+'use strict';
+const heaing = document.querySelector('.heading');
+const txt = document.querySelector('.txt');
+const addTask = document.querySelector('.btn-add');
+const welcomWord = document.querySelector('.welcom');
+const invaildMessage = document.querySelector('.invaild');
+const newTasksContainer = document.querySelector('.newTasks-container');
+const clearTasks = document.querySelector('.btn-clear');
+const btnClose = document.querySelectorAll('.btn-close');
+const btnCheckMark = document.querySelectorAll('.btn-check-mark');
 
-function add(txt) {
-  if (txt.value.length > 1 && txt.value !== " ") {
+const hideMsgs = () => {
+  invaildMessage.classList.add('hidden');
+  welcomWord.classList.add('hidden');
+};
+
+async function add(txt) {
+  if (txt.value.length > 1 && txt.value !== ' ') {
     let newTask = txt.value;
-    // hide error message, welocm word
-    invaildMessage.classList.add("hidden");
-    welcomWord.classList.add("hidden");
+    // hide error message, welcom word
+    hideMsgs();
     // captaillize the task.
     const captallizeTask =
       newTask[0].toUpperCase() + newTask.toLowerCase().slice(1);
@@ -24,33 +28,61 @@ function add(txt) {
     <button class="btn btn-edit">✏️</button>
     <button class="btn btn-check-mark">✔️</button>
     </p>`;
-    newTasksContainer.insertAdjacentHTML("afterbegin", html);
+    newTasksContainer.insertAdjacentHTML('afterbegin', html);
 
     //clear txt area after add task
-    txt.value = "";
+    txt.value = '';
     // apper clear button
-    clearTasks.classList.remove("hidden");
+    clearTasks.classList.remove('hidden');
   } else {
     // show error message.
-    invaildMessage.classList.remove("hidden");
+    invaildMessage.classList.remove('hidden');
   }
 }
 
+// Show all tasks
+const showTasks = async () => {
+  try {
+    const {
+      data: { tasks },
+    } = await axios.get('http://localhost:3000/api/v1/tasks');
+
+    if (tasks) {
+      // hide error message, welcom word
+      hideMsgs();
+
+      const allTasks = tasks
+        .map((task) => {
+          const { completed, _id: taskID, name } = task;
+          return `<p class="newTask">${name}
+          <button class="btn btn-delete">✖</button>
+      <button class="btn btn-edit">✏️</button>
+      <button class="btn btn-check-mark">✔️</button>
+      </p>`;
+        })
+        .join('');
+      newTasksContainer.innerHTML = allTasks;
+    }
+  } catch (error) {}
+};
+
+showTasks();
+
 // Add task by button
-addTask.addEventListener("click", function () {
+addTask.addEventListener('click', function () {
   add(txt);
 });
 
 // Add task by pressing enter
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Enter") add(txt);
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') add(txt);
 });
 
-clearTasks.addEventListener("click", function () {
+clearTasks.addEventListener('click', function () {
   // clear the div
-  newTasksContainer.innerHTML = "";
+  newTasksContainer.innerHTML = '';
   // Add welcom word, hide clear button and hide error meassage
-  welcomWord.classList.remove("hidden");
-  clearTasks.classList.add("hidden");
-  invaildMessage.classList.add("hidden");
+  welcomWord.classList.remove('hidden');
+  clearTasks.classList.add('hidden');
+  invaildMessage.classList.add('hidden');
 });
