@@ -7,13 +7,14 @@ const taskSchema = new mongoose.Schema(
       required: [true, 'A Task must have a name'],
       trim: true,
     },
-    description: {
-      type: String,
-    },
     createdAt: {
       type: Date,
       default: Date.now(),
       select: false,
+    },
+    completed: {
+      type: Boolean,
+      default: false,
     },
   },
   {

@@ -7,9 +7,6 @@ const cors = require('cors');
 const userRouter = require('./routes/userRouter');
 const tasksRouter = require('./routes/tasksRouter');
 
-app.set('view engine', 'pug');
-app.set('views', path.join(__dirname, 'views'));
-
 const corsOptions = {
   origin: 'http://localhost:3000',
   credentials: true, //access-control-allow-credentials:true
