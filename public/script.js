@@ -71,12 +71,21 @@ btnAddTask.addEventListener('click', function () {
 });
 
 // Finshed Tasks
-newTasksContainer.addEventListener('click', (e) => {
+newTasksContainer.addEventListener('click', async (e) => {
   const el = e.target;
   const p = el.parentElement.firstChild;
   if (el.classList.contains('btn-check-mark')) {
+    console.log(el, p);
     p.classList.add('true-task-completed');
     p.classList.remove('false-task-completed');
+  }
+  // sent patch request with new data compled data
+  try {
+    await axios.patch(`/api/v1/tasks/${p.dataset.id}`, {
+      completed: true,
+    });
+  } catch (error) {
+    console.log(error);
   }
 });
 
@@ -95,6 +104,7 @@ newTasksContainer.addEventListener('click', async (e) => {
   }
 });
 
+// Delete All Task
 clearTasks.addEventListener('click', async () => {
   const id = newTasksContainer.firstChild.dataset.id;
   console.log(newTasksContainer.firstChild.firstChild);
