@@ -2,7 +2,7 @@
 
 Simple and Not temporarily todo list
 
-> :warning: **Any update function is not available now**: Be very careful here!
+> :warning: **List is not finished yet**
 
 ## How list works
 

@@ -235,8 +235,11 @@ li {
 
 /*Edit task page */
 .EditTaskContainer {
+  background-color: rgb(184, 184, 184);
   width: 550px;
   height: 250px;
+  left: 0;
+  top: 0;
 }
 .editTaskHead {
   font-family: monospace;
@@ -251,6 +254,11 @@ li {
   font-size: 20px;
   padding: 10px 30px 30px 30px;
   width: 150px;
+  background-color: white;
+}
+.id-input {
+  font-size: small;
+  width: 10px;
 }
 .completed-checkbox {
   font-size: 20px;
