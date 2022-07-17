@@ -139,21 +139,22 @@ body {
 }
 .newTasks-container {
   background-color: rgba(126, 124, 124, 0.2);
-  padding: 10px;
-  margin: 2px;
   border: rgb(7, 121, 32) 1px;
   border-style: none none solid;
-  right: 0;
-  left: 0;
+  padding: 10px;
+  margin: 2px;
+  display: block;
 }
 .newTask {
   display: inline;
   color: black;
+  padding: 12px;
+  margin: 0px;
   font-size: 18px;
   font-weight: lighter;
-  text-align: left;
-  right: 0;
-  left: 0;
+
+  left: 10%;
+  right: 10%;
 }
 .newTask:hover {
   color: rgb(7, 105, 51);

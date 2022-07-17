@@ -31,7 +31,7 @@ const showTasks = async () => {
   try {
     const {
       data: { tasks },
-    } = await axios.get('http://localhost:3000/api/v1/tasks');
+    } = await axios.get('/api/v1/tasks');
 
     if (tasks.length > 0) {
       // hide error message, welcom word
@@ -39,11 +39,11 @@ const showTasks = async () => {
       const allTasks = tasks
         .map((task) => {
           const { completed, _id: taskID, name } = task;
-          return `<p class="newTask ${completed}-task-completed" data-id="${taskID}">${name}</p>
+          return `<div class="newTasks-container"><p class="newTask ${completed}-task-completed" data-id="${taskID}">${name}</p>
           <button class="btn btn-delete"data-id="${taskID}">✖</button>
           <button class="btn btn-edit">✏️</button>
-          <button class="btn btn-check-mark">✔️</button>
-          `;
+          <button class="btn btn-check-mark">✔️</button><br>
+          </div>`;
         })
         .join('');
       newTasksContainer.innerHTML = allTasks;
