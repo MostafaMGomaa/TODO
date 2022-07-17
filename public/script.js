@@ -5,6 +5,7 @@ const txt = document.querySelector('.txt');
 const btnAddTask = document.querySelector('.btn-add');
 const welcomWord = document.querySelector('.welcom');
 const invaildMessage = document.querySelector('.invaild');
+const tasksContainer = document.querySelector('.tasks');
 const newTasksContainer = document.querySelector('.newTasks-container');
 const clearTasks = document.querySelector('.btn-clear');
 const btnDelete = document.querySelector('.btn-delete');
@@ -33,13 +34,20 @@ const showTasks = async () => {
       data: { tasks },
     } = await axios.get('/api/v1/tasks');
 
-    if (tasks.length > 0) {
+    if (tasks.length < 1) {
+      // hide tasks container and clear btn, tasks container
+      newTasksContainer.classList.add('hidden');
+      clearTasks.classList.add('hidden');
+      tasksContainer.classList.add('hidden');
+      return;
+    } else {
       // hide error message, welcom word
       hideMsgs();
       const allTasks = tasks
         .map((task) => {
           const { completed, _id: taskID, name } = task;
-          return `<div class="newTasks-container"><p class="newTask ${completed}-task-completed" data-id="${taskID}">${name}</p>
+
+          return `<div class="newTasks-container" data-id="${taskID}"><p class="newTask ${completed}-task-completed" data-id="${taskID}">${name}</p>
           <button class="btn btn-delete"data-id="${taskID}">✖</button>
           <button class="btn btn-edit">✏️</button>
           <button class="btn btn-check-mark">✔️</button><br>
@@ -51,7 +59,7 @@ const showTasks = async () => {
       clearTasks.classList.remove('hidden');
     }
   } catch (error) {
-    console.log(error);
+    invaildMessage.classList.remove('hidden');
   }
 };
 
@@ -62,29 +70,19 @@ btnAddTask.addEventListener('click', function () {
   addTask();
 });
 
-// Add task by pressing enter
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Enter') addTask();
+// Finshed Tasks
+newTasksContainer.addEventListener('click', (e) => {
+  const el = e.target;
+  const p = el.parentElement.firstChild;
+  if (el.classList.contains('btn-check-mark')) {
+    p.classList.add('true-task-completed');
+    p.classList.remove('false-task-completed');
+  }
 });
 
-clearTasks.addEventListener('click', function () {
-  // clear the div
-  newTasksContainer.innerHTML = '';
-  // Add welcom word, hide clear button and hide error meassage
-  welcomWord.classList.remove('hidden');
-  clearTasks.classList.add('hidden');
-  invaildMessage.classList.add('hidden');
-});
-
-//
-// btnCheckMark.addEventListener('click', () => {
-//   // delete class -> false-task-completed
-//   // add class -> true-task-completed
-// });
-
+// Delete Task
 newTasksContainer.addEventListener('click', async (e) => {
   const el = e.target;
-  console.log(el.classList);
   if (el.classList.contains('btn-delete')) {
     const id = el.dataset.id;
     console.log(id);
@@ -94,5 +92,18 @@ newTasksContainer.addEventListener('click', async (e) => {
     } catch (error) {
       console.log(error);
     }
+  }
+});
+
+clearTasks.addEventListener('click', async () => {
+  const id = newTasksContainer.firstChild.dataset.id;
+  console.log(newTasksContainer.firstChild.firstChild);
+
+  while (!tasksContainer.classList.contains('hidden')) {
+    const id = newTasksContainer.firstChild.firstChild.dataset.id;
+    try {
+      await axios.delete(`/api/v1/tasks/${id}`);
+      showTasks();
+    } catch (error) {}
   }
 });

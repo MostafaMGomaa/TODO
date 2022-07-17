@@ -152,7 +152,6 @@ body {
   margin: 0px;
   font-size: 18px;
   font-weight: lighter;
-
   left: 10%;
   right: 10%;
 }
@@ -223,7 +222,7 @@ ul {
 li {
   display: inline;
 }
-.finshed {
+.true-task-completed {
   text-decoration: line-through;
 }
 .hidden {
