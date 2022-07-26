@@ -62,7 +62,7 @@ showTasks();
 const addTask = async () => {
   const name = txt.value;
   try {
-    await axios.post('http://127.0.0.1:3000/api/v1/tasks', { name });
+    await axios.post('s/api/v1/tasks', { name });
     showTasks();
     txt.value = '';
   } catch (error) {
